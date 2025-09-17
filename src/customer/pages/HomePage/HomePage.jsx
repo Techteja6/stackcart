@@ -10,14 +10,6 @@ import { CartContext } from '../../../context/CartContext';
 const HomePage = () => {
   const { cartItems, addToCart } = useContext(CartContext);
 
-  const products = [
-    { id: 1, name: "Nike Air", price: 4999 },
-    { id: 2, name: "Adidas Runner", price: 3999 },
-    { id: 3, name: "Puma Flex", price: 2999 },
-    { id: 4, name: "Woodland Trek", price: 1999 },
-    { id: 5, name: "Bata Classic", price: 2499 },
-  ];
-
   const totalAmount = Array.isArray(cartItems) && cartItems.length > 0
     ? cartItems.reduce((acc, item) => acc + (item.price || 0) * (item.quantity || 1), 0)
     : 0;
@@ -55,27 +47,27 @@ const HomePage = () => {
       <section id="shoes">
         <ShoesSection addToCart={addToCart} />
       </section>
-{/* ✅ Cart & Checkout Section */}
-<section id="cart" className="mt-10 p-6 border rounded-lg shadow-md bg-gray-50 mx-6 md:mx-20">
-  <h2 className="text-xl font-bold mb-4">Your Cart</h2>
-  {Array.isArray(cartItems) && cartItems.length > 0 ? (
-    <>
-      <ul className="mb-4">
-        {cartItems.map((item, index) => (
-          <li key={index} className="flex justify-between py-2 border-b">
-            <span>{item.name || "Unnamed Item"}</span>
-            <span>₹{item.price || 0} × {item.quantity || 1}</span>
-          </li>
-        ))}
-      </ul>
-      <h3 className="text-lg font-semibold mb-2">Total: ₹{totalAmount}</h3>
-      {/* ✅ This now triggers the mock Razorpay modal */}
-      <CheckoutButton amount={totalAmount} />
-    </>
-  ) : (
-    <p className="text-gray-500">Your cart is empty.</p>
-  )}
-</section>
+
+      {/* ✅ Cart & Checkout Section */}
+      <section id="cart" className="mt-10 p-6 border rounded-lg shadow-md bg-gray-50 mx-6 md:mx-20">
+        <h2 className="text-xl font-bold mb-4">Your Cart</h2>
+        {Array.isArray(cartItems) && cartItems.length > 0 ? (
+          <>
+            <ul className="mb-4">
+              {cartItems.map((item, index) => (
+                <li key={index} className="flex justify-between py-2 border-b">
+                  <span>{item.name || "Unnamed Item"}</span>
+                  <span>₹{item.price || 0} × {item.quantity || 1}</span>
+                </li>
+              ))}
+            </ul>
+            <h3 className="text-lg font-semibold mb-2">Total: ₹{totalAmount}</h3>
+            <CheckoutButton amount={totalAmount} />
+          </>
+        ) : (
+          <p className="text-gray-500">Your cart is empty.</p>
+        )}
+      </section>
 
       {/* ✅ Stores Section */}
       <section id="stores" className="bg-gray-50 py-16 px-6 md:px-20">
