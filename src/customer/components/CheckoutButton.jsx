@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FakeRazorpayModal from "./FakeRazorpayModal"; // Make sure this file exists
+import FakeRazorpayModal from "./FakeRazorpayModal"; 
 
 const CheckoutButton = ({ amount }) => {
   const [showModal, setShowModal] = useState(false);
