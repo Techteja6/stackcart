@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MensCartCard = ({ item }) => {
-  if (!item) return null; // Prevent crash if item is undefined
+  if (!item) return null; 
 
   return (
     <div className="border rounded-lg overflow-hidden shadow hover:shadow-xl transition duration-300">
